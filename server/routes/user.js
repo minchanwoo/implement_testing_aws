@@ -1,15 +1,27 @@
 const express = require('express');
+const { User } = require('../models');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('GET REQUEST~!!')
+router.get('/', async(req, res) => {
+  const users = await User.findAll({
+    
+  });
+  res.send(users)
 });
 
-router.post('/', (req, res) => {
-  console.log('BODY!!!', req.body)
-  console.log('QUERY~!!', req.query)
-  res.send('POST REQUEST~!!')
+router.post('/',  async(req, res) => {
+  
+  const { nick, name, email, password } = req.body;
+
+  await User.create({
+    email,
+    nick,
+    name,
+    password
+  });
+
+  res.send('OK')
 });
 
 module.exports = router;
