@@ -5,13 +5,13 @@ const router = express.Router();
 
 router.get('/', async(req, res) => {
   const users = await User.findAll({
-    
+    order:[['id', 'DESC']]
   });
   res.send(users)
 });
 
+
 router.post('/',  async(req, res) => {
-  
   const { nick, name, email, password } = req.body;
 
   await User.create({
@@ -21,7 +21,8 @@ router.post('/',  async(req, res) => {
     password
   });
 
-  res.send('OK')
+  res.send('OK');
 });
+
 
 module.exports = router;
