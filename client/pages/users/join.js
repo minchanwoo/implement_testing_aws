@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const Users = () => {
@@ -8,6 +9,8 @@ const Users = () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
+  const router = useRouter();
+
   const submitUser = async(e) => {
     e.preventDefault();
     
@@ -15,7 +18,7 @@ const Users = () => {
 
     const result = await axios.post('http://localhost:4000/users', body);
     
-    console.log(result)
+    router.push('/');
 
   }
 
