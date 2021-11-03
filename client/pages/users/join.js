@@ -16,7 +16,7 @@ const Users = () => {
     
     const body = {name, nick, email, password};
 
-    const result = await axios.post('http://localhost:4000/users', body);
+    await axios.post('https://www.risingkorean.com/users', body);
     
     router.push('/');
 

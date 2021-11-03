@@ -21,7 +21,7 @@ const Users = ({users}) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:4000/users');
+  const res = await fetch('https://www.risingkorean.com/users');
   const users = await res.json();
 
   return {
